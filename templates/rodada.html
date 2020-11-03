@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
 {{ data.nome }}
 {{ data.status }}
 {% for partida in data.partidas %}
@@ -8,3 +11,4 @@
     {{ partida.estadio.nome_popular }}
     <br />
 {% endfor %}
+{% endblock conteudo %}
