@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+{{ data.nome }}
+{{ data.status }}
+{% for partida in data.partidas %}
+    <img src="{{ partida.time_mandante.escudo }}" width="20px" alt="{{ partida.time_mandante.nome_popular }}" /><img src="{{ partida.time_visitante.escudo }}" width="20px" alt="{{ partida.time_visitante.nome_popular }}" />
+    {{ partida.time_mandante.nome_popular }} | {{ partida.time_visitante.nome_popular }}
+    {{ partida.placar_mandante }} x {{ partida.placar_visitante }}
+    {{ partida.data_realizacao }}
+    {{ partida.estadio.nome_popular }}
+    <br />
+{% endfor %}
+{% endblock conteudo %}

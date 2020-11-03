@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+{% for rodada in data %}
+    {{ rodada.nome }}
+    {{ rodada.rodada }}
+{% endfor %}
+{% endblock conteudo %}

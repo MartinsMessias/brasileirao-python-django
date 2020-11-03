@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<table class=" highlight">
+    <thead>
+        <tr>
+            <th>POS</th>
+            <th>Time</th>
+            <th>PTS</th>
+            <th>J</th>
+            <th>V</th>
+            <th>E</th>
+            <th>D</th>
+            <th>GP</th>
+            <th>GC</th>
+            <th>SG</th>
+            <th>%</th>
+            <th>Recentes</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for time in data %}
+        <tr>
+            <td>{{ time.posicao }}°</td>
+            <td>
+                <img class="responsive-img" src="{{ time.time.escudo }}" width="20px" alt="{{ time.time.nome_popular }}"/>
+                {{ time.time.nome_popular }}
+            </td>
+            <td>{{ time.pontos }}</td>
+            <td>{{ time.jogos }}</td>
+            <td>{{ time.vitorias }}</td>
+            <td>{{ time.empates }}</td>
+            <td>{{ time.derrotas }}</td>
+            <td>{{ time.gols_pro }}</td>
+            <td>{{ time.gols_contra }}</td>
+            <td>{{ time.saldo_gols }}</td>
+            <td>{{ time.aproveitamento }}%</td>
+            <td>
+                {% for jogo in time.ultimos_jogos %}
+                    {% if jogo == 'v' %}
+                        <span class="material-icons green" title="Vitória">arrow_upward</span>
+                    {% elif jogo == 'd' %}
+                        <span class="material-icons red" title="Derrota">arrow_downward</span>
+                    {% elif jogo == 'e' %}
+                        <span class="material-icons yellow" title="Empate">vertical_align_center</span>
+                    {% endif %}
+
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock conteudo %}
