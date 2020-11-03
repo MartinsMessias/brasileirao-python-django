@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core_app.views import Classificacao, InformacoesCampeonato, Rodadas, Rodada
+from core_app.views import Classificacao, InformacoesCampeonato, Rodadas, Rodada, Artilharia
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('informacoes/', InformacoesCampeonato.as_view(), name='info_campeonato'),
     path('rodadas/', Rodadas.as_view(), name='rodadas'),
     path('rodada/<str:rodada>', Rodada.as_view(), name='rodada'),
+    path('artilheiros/', Artilharia.as_view(), name='artilheiros'),
 ]
