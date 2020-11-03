@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
+requests = "*"
+requests-cache = "*"
 
 [dev-packages]
 
