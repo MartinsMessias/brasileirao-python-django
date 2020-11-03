@@ -49,14 +49,3 @@ class Rodada(View):
         context = {'data': requests.get(url, headers=headers).json()}
 
         return render(request, self.template_name, context)
-
-
-class Artilharia(View):
-    template_name = 'artilharia.html'
-
-    def get(self, request):
-        url = f'https://api.api-futebol.com.br/v1/campeonatos/10/artilharia'
-        headers = {'Authorization': f'Bearer {API_TOKEN}'}
-        context = {'data': requests.get(url, headers=headers).json()}
-
-        return render(request, self.template_name, context)
