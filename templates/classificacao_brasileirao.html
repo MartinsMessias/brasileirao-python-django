@@ -1,0 +1,52 @@
+<table>
+    <thead>
+        <tr>
+            <th>POS</th>
+            <th>Time</th>
+            <th>PTS</th>
+            <th>J</th>
+            <th>V</th>
+            <th>E</th>
+            <th>D</th>
+            <th>GP</th>
+            <th>GC</th>
+            <th>SG</th>
+            <th>%</th>
+            <th>Recentes</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for time in data %}
+        <tr>
+            <td>{{ time.posicao }}</td>
+            <td>
+                <img src="{{ time.time.escudo }}" width="30px" alt="{{ time.time.nome_popular }}"/>
+                {{ time.time.nome_popular }}
+            </td>
+            <td>{{ time.pontos }}</td>
+            <td>{{ time.jogos }}</td>
+            <td>{{ time.vitorias }}</td>
+            <td>{{ time.empates }}</td>
+            <td>{{ time.derrotas }}</td>
+            <td>{{ time.gols_pro }}</td>
+            <td>{{ time.gols_contra }}</td>
+            <td>{{ time.saldo_gols }}</td>
+            <td>{{ time.aproveitamento }}</td>
+            <td>
+                {% for jogo in time.ultimos_jogos %}
+                    {% if jogo == 'v' %}
+                        <b>V</b>
+                    {% elif jogo == 'd' %}
+                        <b>D</b>
+                    {% elif jogo == 'e' %}
+                        <b>E</b>
+                    {% endif %}
+                    {% if not forloop.last %}
+                        ,
+                    {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
