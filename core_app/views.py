@@ -38,3 +38,14 @@ class Rodadas(View):
         context = {'data': requests.get(url, headers=headers).json()}
 
         return render(request, self.template_name, context)
+
+
+class Rodada(View):
+    template_name = 'rodada.html'
+
+    def get(self, request, rodada):
+        url = f'https://api.api-futebol.com.br/v1/campeonatos/10/rodadas/{rodada}'
+        headers = {'Authorization': f'Bearer {API_TOKEN}'}
+        context = {'data': requests.get(url, headers=headers).json()}
+
+        return render(request, self.template_name, context)
