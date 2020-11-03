@@ -18,11 +18,11 @@ class Classificacao(View):
         return render(request, self.template_name, context)
 
 
-class Home(View):
-    template_name = 'index.html'
+class InformacoesCampeonato(View):
+    template_name = 'informacoes_brasileirao.html'
 
     def get(self, request):
-        url = 'https://api.api-futebol.com.br/v1/campeonatos'
+        url = 'https://api.api-futebol.com.br/v1/campeonatos/10'
         headers = {'Authorization': f'Bearer {API_TOKEN}'}
         context = {'data': requests.get(url, headers=headers).json()}
 
