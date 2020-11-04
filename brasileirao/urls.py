@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core_app.views import Classificacao, InformacoesCampeonato, Rodadas, Rodada
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+
+
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
+from django.views.decorators.cache import cache_page
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('classificacao/', Classificacao.as_view(), name='classificacao'),
+    path('classificacao/', cache_page(CACHE_TTL)(Classificacao.as_view()), name='classificacao'),
     path('informacoes/', InformacoesCampeonato.as_view(), name='info_campeonato'),
     path('rodadas/', Rodadas.as_view(), name='rodadas'),
     path('rodada/<str:rodada>', Rodada.as_view(), name='rodada'),
